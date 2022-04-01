@@ -1,0 +1,36 @@
+
+syntax = "proto3";
+
+service dayhistory {
+    rpc GetAll(Request) returns (TickerResponses) {}
+    rpc Get(Request) returns (TickerResponses) {}
+}
+
+message Request {
+    string value = 1;
+}
+
+message TickerResponse {
+    int32 stock_price_historical_id = 1;
+    string historical_price_date_time=2;
+    double day_open_price=3;
+    double day_high_price=4;
+    double day_low_price= 5;
+    double day_close_price= 6;
+    double day_volume= 7;
+    string ticker_id = 8;
+    int32 bu_id = 9;
+    int32 sub_bu_id = 10;
+    int32 application_id = 11;
+    bool is_active = 12;
+    int32 created_by = 13;
+    string created_date =14;
+    int32 last_modified_by = 15;
+    string last_modified_date = 16;
+    string isin_code = 17;
+
+}
+
+message TickerResponses {
+    repeated TickerResponse response = 1;
+}
